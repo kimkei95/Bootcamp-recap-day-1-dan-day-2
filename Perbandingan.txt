@@ -1,0 +1,17 @@
+Toko A
+
+ Produk: iphoneXR Harga: 200 Stok: 90
+
+ Produk: Iphone15 Harga: 300 Stok: 120
+
+ Produk: iphone20 Harga: 450 Stok: 120
+
+ TokoB
+
+ Produk:iphoneXR Harga: 200 Stok: 90
+
+ Produk:Iphone15 Harga: 400 Stok: 120
+
+ Produk:iphone20 Harga: 120 Stok: 120
+
+ Highlight:
