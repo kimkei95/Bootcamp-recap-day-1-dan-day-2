@@ -1,6 +1,10 @@
 package WeeklyCRUDDemo;
 
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ArrayNode;
+import com.fasterxml.jackson.databind.node.ObjectNode;
+
 import java.util.Scanner;
 import java.sql.*;
 public class WeeklyDemo {
@@ -79,13 +83,18 @@ public class WeeklyDemo {
                 ResultSet rs = st.executeQuery()){
             ResultSetMetaData rsmd =rs.getMetaData();
             int columnCount=rsmd.getColumnCount();
+            ObjectMapper mapper = new ObjectMapper();
+            ArrayNode arrNode = mapper.createArrayNode();
             while(rs.next()){
+                ObjectNode objNode = mapper.createObjectNode();
                 for(int i =1; i<=columnCount; i++){
-                    System.out.println(rs.getString(i)+"\t");
+                    String columnName = rsmd.getColumnName(i);
+                    objNode.put(columnName, rs.getString(i));
                 }
-                System.out.println();
-            }
-        }catch (SQLException e){
+                arrNode.add(objNode);
+            }String jsonString = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(arrNode);
+            System.out.println(jsonString);
+        }catch (SQLException | com.fasterxml.jackson.core.JsonProcessingException e){
             System.out.println(e);
         }
     }
@@ -96,13 +105,19 @@ public class WeeklyDemo {
             ResultSetMetaData rsmd = rs.getMetaData();
 
             int columnCount = rsmd.getColumnCount();
+            ObjectMapper mapper = new ObjectMapper();
+            ArrayNode arrNode = mapper.createArrayNode();
             while(rs.next()){
+                ObjectNode objNode = mapper.createObjectNode();
                 for(int i =1; i<=columnCount; i++){
-                    System.out.println(rs.getString(i)+"\t");
+                    String columnName = rsmd.getColumnName(i);
+                    objNode.put(columnName, rs.getString(i));
                 }
-                System.out.println();
+                arrNode.add(objNode);
             }
-        }catch (SQLException e){
+            String jsonString = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(arrNode);
+            System.out.println(jsonString);
+        }catch (SQLException | com.fasterxml.jackson.core.JsonProcessingException e){
             System.out.println(e);
         }
     }
