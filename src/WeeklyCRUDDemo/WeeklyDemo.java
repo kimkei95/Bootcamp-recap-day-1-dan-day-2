@@ -179,7 +179,6 @@ public void deleteCustomer(){
 }
 
 
-
     public static void main(String[] args) {
         WeeklyDemo demo = new WeeklyDemo();
         Scanner scanner = new Scanner(System.in);
