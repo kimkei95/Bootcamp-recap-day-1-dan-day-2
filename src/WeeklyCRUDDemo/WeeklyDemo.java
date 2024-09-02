@@ -126,14 +126,14 @@ public class WeeklyDemo {
         try(Connection con =DriverManager.getConnection(url,username,password);
             PreparedStatement pst = con.prepareStatement(updatePriceQuery)){
             System.out.println("enter product id: ");
-            int prodId = scanner.nextInt();
+            int productId = scanner.nextInt();
             scanner.nextLine();
             System.out.println("enter price update: ");
             int updatePrice = scanner.nextInt();
             scanner.nextLine();
 
             pst.setInt(1,updatePrice);
-            pst.setInt(2,prodId);
+            pst.setInt(2,productId);
 
             pst.executeUpdate();
             System.out.println("data berhasil di update");
